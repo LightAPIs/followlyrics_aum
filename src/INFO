@@ -1,0 +1,9 @@
+{
+  "name": "followlyrics",
+  "displayname": "歌词网",
+  "description": "zh.followlyrics.com",
+  "version": "1.0",
+  "module": "followSource.php",
+  "type": "lyric",
+  "class": "AumFollowSource"
+}
