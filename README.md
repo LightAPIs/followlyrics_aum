@@ -22,4 +22,5 @@
 ## 其他歌词插件
 
 - [LightAPIs/kugeci_aum](https://github.com/LightAPIs/kugeci_aum)
+- [LightAPIs/netease_aum](https://github.com/LightAPIs/netease_aum)
 - [LightAPIs/qq_music_aum](https://github.com/LightAPIs/qq_music_aum)
