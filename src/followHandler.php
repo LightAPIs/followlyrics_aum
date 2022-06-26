@@ -25,9 +25,9 @@ class AumFollowHandler {
         return $result === false ? '' : $result;
     }
 
-    public static function search($word) {
+    public static function search($title, $artist) {
         $results = array();
-        $url = AumFollowHandler::$siteSearch . urlencode($word);
+        $url = AumFollowHandler::$siteSearch . urlencode($title);
         $html = new simple_html_dom();
         $html->load(AumFollowHandler::getContent($url));
         $items = $html->find('.table-striped tbody tr');
