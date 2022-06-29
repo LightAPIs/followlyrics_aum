@@ -14,6 +14,7 @@ foreach ($testArray as $key => $item) {
         echo "等待 5 秒...\n";
         sleep(5);
     }
+    echo "{title = " . $item['title'] . "; artist = " . $item['artist'] . " }.\n";
     $testObj = new AudioStationResult();
     $count = $downloader->getLyricsList($item['artist'], $item['title'], $testObj);
     if ($count > 0) {
