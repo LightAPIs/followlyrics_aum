@@ -13,7 +13,7 @@ class AumFollowHandler {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');
-        curl_setopt($curl, CURLOPT_USERAGENT, AumFollowHandler::$userAgent);
+        curl_setopt($curl, CURLOPT_USERAGENT, self::$userAgent);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($curl, CURLOPT_TIMEOUT, 10);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
@@ -27,9 +27,9 @@ class AumFollowHandler {
 
     public static function search($title, $artist) {
         $results = array();
-        $url = AumFollowHandler::$siteSearch . urlencode($title);
+        $url = self::$siteSearch . urlencode($title);
         $html = new simple_html_dom();
-        $html->load(AumFollowHandler::getContent($url));
+        $html->load(self::getContent($url));
         $items = $html->find('.table-striped tbody tr');
         foreach($items as $ele) {
             $song = '';
@@ -44,7 +44,7 @@ class AumFollowHandler {
                 if (strpos($href, '/lyrics/') !== false) {
                     if ($text !== '' && $text !== '歌词') {
                         $song = $text;
-                        $id = AumFollowHandler::getIdFromSrc($href);
+                        $id = self::getIdFromSrc($href);
                     }
                 } elseif (strpos($href, '/artist/') !== false) {
                     array_push($singers, $text);
@@ -64,11 +64,11 @@ class AumFollowHandler {
 
     public static function downloadLyric($songId) {
         $res = '';
-        $downloadLrcUrl = AumFollowHandler::$siteDownload . $songId . '/lrc';
-        $res = AumFollowHandler::getContent($downloadLrcUrl);
+        $downloadLrcUrl = self::$siteDownload . $songId . '/lrc';
+        $res = self::getContent($downloadLrcUrl);
         if ($res === '') {
-            $downloadTxtUrl = AumFollowHandler::$siteDownload . $songId . '/txt';
-            $res = AumFollowHandler::getContent($downloadTxtUrl);
+            $downloadTxtUrl = self::$siteDownload . $songId . '/txt';
+            $res = self::getContent($downloadTxtUrl);
         }
         return $res;
     }
